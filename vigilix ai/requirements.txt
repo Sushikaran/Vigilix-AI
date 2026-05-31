@@ -1,0 +1,8 @@
+flask
+opencv-python
+numpy
+ultralytics
+python-dotenv
+inference-sdk
+werkzeug
+gunicorn
