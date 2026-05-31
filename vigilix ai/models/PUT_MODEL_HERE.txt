@@ -1,0 +1,2 @@
+Optional: place your trained model here as threat_detector.pt
+Do not upload large model files to GitHub unless required.

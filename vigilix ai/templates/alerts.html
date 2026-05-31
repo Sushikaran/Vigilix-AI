@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="top-head"><div><span class="tag">Past Records</span><h1>Alerts with Evidence</h1><p>Review what happened in the past using evidence screenshot, date, day, time and location.</p></div><a class="btn secondary" href="/clear_alerts">Clear Alerts</a></header>
+<section class="alert-list expanded">
+    {% for alert in alerts %}
+    <div class="alert-detail evidence-detail">
+        {% if alert.evidence_path %}<img class="evidence-img" src="/evidence/{{ alert.evidence_path }}">{% else %}<div class="evidence-img empty-img">No Evidence</div>{% endif %}
+        <div class="alert-info"><h3>{{ alert.threat_type }}</h3><p><b>Camera:</b> {{ alert.camera_name }}</p><p><b>Location:</b> {{ alert.location }}</p><p><b>Location Type:</b> {{ alert.location_type }}</p><p><b>Date:</b> {{ alert.alert_date }}</p><p><b>Day:</b> {{ alert.alert_day }}</p><p><b>Time:</b> {{ alert.alert_time }}</p><p><b>Confidence:</b> {{ alert.confidence }}</p></div>
+        <div><span class="risk {{ alert.risk_level|lower }}">{{ alert.risk_level }}</span>{% if alert.evidence_path %}<a class="btn secondary small" target="_blank" href="/evidence/{{ alert.evidence_path }}">Open Evidence</a>{% endif %}</div>
+    </div>
+    {% else %}<div class="empty"><h3>No alerts yet.</h3><p>Alerts will appear when an event is detected.</p></div>{% endfor %}
+</section>
+{% endblock %}
